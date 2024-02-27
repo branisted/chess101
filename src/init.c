@@ -3,7 +3,7 @@
 #include "stdlib.h"
 #include "definitii.h"
 
-#define RAND_64 ((U64)rand() + ((U64)rand() << 15) + ((U64)rand() << 30) + ((U64)rand() << 45) + (((U64)rand() & 0xf) << 60))
+#define RAND_64 ((U64)rand() | ((U64)rand() << 15) | ((U64)rand() << 30) | ((U64)rand() << 45) | (((U64)rand() & 0xf) << 60))
 
 int Sq120ToSq64[BRD_SQ_NUM];
 int Sq64ToSq120[64];
