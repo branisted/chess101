@@ -83,9 +83,10 @@ typedef struct {
     U64 posKey; // cheie unica pt fiecare "state" de pozitii din joc
 
     int pceNum[13]; // nr pieselor
-    int bigPce[3]; // ca la pioni, orice in afara de pioni
-    int majPce[3]; // piese "majore" - turnuri si regine
-    int minPce[3]; // nebuni si knights
+    int bigPce[2]; // ca la pioni, orice in afara de pioni
+    int majPce[2]; // piese "majore" - turnuri si regine
+    int minPce[2]; // nebuni si knights
+    int material[2];
 
     S_UNDO history[MAXGAMEMOVES];
 
@@ -123,6 +124,16 @@ extern char SideChar[];
 extern char RankChar[];
 extern char FileChar[];
 
+//data.c
+extern int PieceBig[13];
+extern int PieceMaj[13];
+extern int PieceMin[13];
+extern int PieceVal[13];
+extern int PieceCol[13];
+
+extern int FilesBrd[BRD_SQ_NUM];
+extern int RanksBrd[BRD_SQ_NUM];
+
 /* FUNCTII */
 
 //init.c
@@ -140,5 +151,9 @@ extern U64 GeneratePosKey(const S_BOARD *pos);
 extern void ResetBoard(S_BOARD *pos);
 extern int ParseFEN(char *fen, S_BOARD *pos);
 extern void PrintBoard(const S_BOARD *pos);
+extern void UpdateListsMaterial(S_BOARD *pos);
+extern int CheckBoard(const S_BOARD *pos);
+
+//data.c
 
 #endif
